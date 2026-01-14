@@ -1,0 +1,31 @@
+# 支付系统配置文件
+
+server:
+  port: 8080
+
+mysql:
+  host: localhost
+  port: 3306
+  user: root
+  password: root123
+  database: paysystem
+  max_open_conns: 100
+  max_idle_conns: 10
+
+redis:
+  host: localhost
+  port: 6379
+  password: ""
+  db: 0
+
+kafka:
+  brokers:
+    - localhost:9092
+  topic:
+    pay_result: "pay_result"         # 支付结果通知
+    order_timeout: "order_timeout"   # 订单超时检查
+
+# 业务配置
+business:
+  order_timeout_minutes: 30          # 订单超时时间（分钟）
+  max_retry_count: 3                 # 消息发送最大重试次数
